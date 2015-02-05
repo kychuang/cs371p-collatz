@@ -62,7 +62,7 @@ int cycle_length (int n) {
 
 int collatz_eval (int i, int j) {
     // <your code>
-    /*int maxCycleLength = 1;     //stores the largest cycle length of all collatz numbers in the range of i to a
+    int maxCycleLength = 1;     //stores the largest cycle length of all collatz numbers in the range of i to a
     int tempCycleLength;    //stores the cycle length of the most recently computed collatz number
     for (int a=i; a <= j; a++) {
         tempCycleLength = cycle_length(a);
@@ -70,8 +70,7 @@ int collatz_eval (int i, int j) {
             maxCycleLength = tempCycleLength;
     }
     return maxCycleLength;
-    */
-    return 1;}
+}
 
 // -------------
 // collatz_print
