@@ -29,6 +29,16 @@ using namespace std;
 pair<int, int> collatz_read (const string& s);
 
 // ------------
+// cycle_length
+// ------------
+
+/**
+ * @param n a collatz number
+ * @return the cycle length of n
+ */
+int cycle_length (int n);
+
+// ------------
 // collatz_eval
 // ------------
 
