@@ -62,6 +62,8 @@ int cycle_length (int n) {
 
 int collatz_eval (int i, int j) {
     // <your code>
+    assert(i > 0);
+    assert(j > 0);   
     int maxCycleLength = 1;     //stores the largest cycle length of all collatz numbers in the range of i to a
     int tempCycleLength;    //stores the cycle length of the most recently computed collatz number
     for (int a=i; a <= j; a++) {
@@ -69,6 +71,9 @@ int collatz_eval (int i, int j) {
         if (maxCycleLength < tempCycleLength)
             maxCycleLength = tempCycleLength;
     }
+    assert(maxCycleLength >= 1);
+    assert(maxCycleLength >= tempCycleLength);   
+    
     return maxCycleLength;
 }
 
