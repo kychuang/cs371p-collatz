@@ -9,6 +9,9 @@
 
 using namespace std;
 
+int collatz_cache [100000] = { };       // a cache containing the cycle_lengths of collatz numbers as indicated by index
+                                        // all values in cache initialized to 0. collatz_cache[0] remains empty forever.
+
 // ------------
 // collatz_read
 // ------------
@@ -29,15 +32,31 @@ pair<int, int> collatz_read (const string& s) {
 
 int cycle_length (int n) {
     unsigned int c = 1;
+    int original_n = n; //saves value of n so cycle_length of n can be cached.
+    
+    /* If the number has been cached, load the cached value
+       and terminate the loop. */
     while (n > 1) {
-        if ((n % 2) == 0)
-            n = (n / 2);
-        else {
-            n = (3 * n) + 1;
-            //++c;  
+        if((n < 100000) && (collatz_cache[n] > 0)){     //check to see if n is in the cache already
+            if(n == original_n)
+                c = collatz_cache[n];
+            else
+                c = c + collatz_cache[n] - 1;
+
+            break;
         }
-    ++c;
+        else {
+        	if ((n % 2) == 0)
+            n = (n / 2);
+        	else
+            	n = (3 * n) + 1;
+    		++c;
+    	}
     }
+    
+	if(original_n < 100000)
+    	collatz_cache[original_n] = c;
+
     return c;
 }
 
