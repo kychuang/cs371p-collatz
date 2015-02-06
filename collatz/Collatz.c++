@@ -18,8 +18,7 @@
 
 using namespace std;
 
-int collatz_cache [100000] = { };       // a cache containing the cycle_lengths of collatz numbers as indicated by index
-                                        // all values in cache initialized to 0. collatz_cache[0] remains empty forever.
+int collatz_cache [100000] = { };       // a cache containing the cycle_lengths of collatz numbers as indicated by index. all values in cache initialized to 0. collatz_cache[0] remains empty forever.
 
 // ------------
 // collatz_read
