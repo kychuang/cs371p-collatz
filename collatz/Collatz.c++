@@ -37,17 +37,24 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 /* This helper function copied from the examples in class
-   computes cycle length of a single collatz number */
+   computes cycle length of a single collatz number 
+
+   If the number has been cached, load the cached value
+   and terminate the loop.
+
+   In cases where a number n in the Collatz sequence of the original_n
+   has been cached, add the cycle_length of n to the 
+   partially computed cycle_length of original_n and terminate the loop.
+   NOTE: 1 is subtracted from this total because the Collatz sequence of all numbers
+   contains 1, and 1 should only be counted once towards the cycle_length. */
 
 int cycle_length (int n) {
     assert(n > 0);
-    unsigned int c = 1;
+    int c = 1;
     int original_n = n; //saves value of n so cycle_length of n can be cached.
-    
-    /* If the number has been cached, load the cached value
-       and terminate the loop. */
+
     while (n > 1) {
-        if((n < 100000) && (collatz_cache[n] > 0)){     //check to see if n is in the cache already
+        if((n < 100000) && (collatz_cache[n] > 0)){
             if(n == original_n)
                 c = collatz_cache[n];
             else
@@ -63,7 +70,6 @@ int cycle_length (int n) {
             ++c;
         }
     }
-
     assert(c > 0);
 
     if(original_n < 100000)
@@ -85,7 +91,7 @@ int collatz_eval (int i, int j) {
     assert(j > 0);   
 
     int maxCycleLength = 1;     //stores the largest cycle length of all collatz numbers in the range of i to a
-    int tempCycleLength;    //stores the cycle length of the most recently computed collatz number
+    int tempCycleLength;        //stores the cycle length of the most recently computed collatz number
 
     for (int a= min(i,j); a <= max(i,j); a++) {
         tempCycleLength = cycle_length(a);
