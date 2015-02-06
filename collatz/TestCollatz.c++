@@ -83,6 +83,10 @@ TEST(Collatz, eval_4) {
     const int v = collatz_eval(900, 1000);
     ASSERT_EQ(174, v);}
 
+TEST(Collatz, eval_5) {
+    const int v = collatz_eval(10, 1);
+    ASSERT_EQ(20, v);}
+
 // -----
 // print
 // -----
@@ -134,6 +138,12 @@ TEST(Collatz, solve_3) {
     ostringstream w;
     collatz_solve(r, w);
     ASSERT_EQ("1 113382 354\n", w.str());}
+
+TEST(Collatz, solve_4) {
+    istringstream r("10 1\n100 200\n201 210\n900 1000\n");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("10 1 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
 
 /*
 % ls -al /usr/include/gtest/

@@ -17,7 +17,6 @@
 // --------
 
 #include <iostream> // cin, cout
-#include <stdlib.h>     // srand, rand
 #include "Collatz.h"
 
 // ----
